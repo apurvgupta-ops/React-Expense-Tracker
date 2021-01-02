@@ -4,11 +4,11 @@ import { ExpenseTrackerContext } from "./Contaxt/Contaxt";
 
 const useTransaction = (title)=>{
     resetCategories();
-    const {transaction} =useContext(ExpenseTrackerContext);
-    const transactionPerType = transaction.filter((t)=>t.type===title);
+    const {transactions} =useContext(ExpenseTrackerContext);
+    const transactionPerType = transactions.filter((t)=>t.type===title);
     const total = transactionPerType.reduce((acc,currval)=>acc+=currval.amount, 0)
     const categories = title==='Income' ?incomeCategories:expenseCategories;
-    console.log({transactionPerType,total,categories});
+    // console.log({transactionPerType,total,categories});
 
 
     transactionPerType.forEach((t)=>{
@@ -17,7 +17,7 @@ const useTransaction = (title)=>{
         if(category) category.amount+=t.amount;
     });
 
-    const filteredCategories = categories.filter((c)=>c.amount>0);
+    const filteredCategories = categories.filter((sc)=>sc.amount>0);
     const chartData={
         datasets:[{
             data : filteredCategories.map((c)=>c.amount),
@@ -27,7 +27,7 @@ const useTransaction = (title)=>{
     }
 
 
-    return{ total ,chartData}
+    return{ filteredCategories,total ,chartData}
 }
 
 

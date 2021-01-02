@@ -1,16 +1,16 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import App from './App'
-import {Provider} from './Contaxt/Contaxt'
-import './index.css'
-import {SpeechProvider} from '@speechly/react-client'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { SpeechProvider } from '@speechly/react-client';
 
+import { Provider } from './Contaxt/Contaxt';
+import App from './App';
+import './index.css';
 
-ReactDOM.render(<>
-<SpeechProvider appId = '5afd89f5-ab6f-4946-a352-2e2c7efc73c0' language = 'en-US'>
-<Provider>
-<App />
-</Provider>
-</SpeechProvider>
-</>
-,document.getElementById('root'))
+ReactDOM.render(
+  <SpeechProvider appId="7c4aee08-1073-4a32-b862-ebe1850e0732" language="en-US">
+    <Provider>
+      <App />
+    </Provider>
+  </SpeechProvider>,
+  document.getElementById('root'),
+);
